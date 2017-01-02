@@ -968,6 +968,10 @@
 			return methodsArray;
 	};
 
+	utils.keke = function() {
+		return "hello";
+	};
+
 	if(shouldExposeConsts) {
 		for(var k in utils.constants) {
 			Cycript.all[k] = utils.constants[k];

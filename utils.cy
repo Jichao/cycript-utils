@@ -955,6 +955,19 @@
 		return output.length / 2;
 	};
 
+	utils.printMethods = function(className) {
+		  var count = new new Type("I");
+		  var classObj = objc_getClass(className);
+		  var methods = class_copyMethodList(classObj, count);
+		  var methodsArray = [];
+		  for(var i = 0; i < *count; i++) {
+		    var method = methods[i];
+				methodsArray.push(method_getName(method));
+		  }
+		  free(methods);
+			return methodsArray;
+	};
+
 	if(shouldExposeConsts) {
 		for(var k in utils.constants) {
 			Cycript.all[k] = utils.constants[k];

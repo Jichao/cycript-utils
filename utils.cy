@@ -968,8 +968,15 @@
 			return methodsArray;
 	};
 
-	utils.keke = function() {
-		return "hello";
+	utils.getController = function(view) {
+		var classObj = objc_getClass("UIViewController");
+		var nextObj = view;
+		while (true) {
+			if ([nextObj isKindOfClass:classObj]) {
+				return nextObj;
+			}
+			nextObj = [nextObj nextResponder];
+		}
 	};
 
 	if(shouldExposeConsts) {
